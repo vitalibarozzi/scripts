@@ -1,0 +1,49 @@
+#!/usr/bin/env python
+# ================================================
+# VimJournal v0.1
+# ================================================
+#
+# Wrapper for Vim to be used as a journal.
+# License: MIT
+# Made by V. Barozzi (contato@oficinadodiabo.org)
+#
+# ================================================
+import os
+import time
+import io
+import subprocess
+
+# :: IO ()
+def main():
+
+    date = time.strftime("%Y") + "." + time.strftime("%m") + "." + time.strftime("%d")  
+    hour = time.strftime("%T")
+
+    entriesFolder = os.getcwd() + "/.entries"
+    entryFile = entriesFolder + "/" + date + ".txt"
+    
+    # Check if entriesfolder exist in current folder
+    if not os.path.isdir(entriesFolder):
+        raise ValueError("Coudnt find", "'" + entriesFolder + "'", "folder.")
+    
+    # Check if entryFile already exist in current entriesFolder
+    if not os.path.exists(entryFile):
+        # create file
+        with open(entryFile, "w") as openFile:
+            openFile.write(date + "\n")
+    
+    # Append hour to it
+    with open(entryFile, "a") as openFile:
+        openFile.write("\n" + hour + "\n")
+
+    # Open vim
+    subprocess.call("vim " + entryFile, shell=True)
+    print("Edting done.")
+
+main()
+
+
+
+
+
+

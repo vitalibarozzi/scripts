@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # ================================================
-# VimJournal v0.1
+# LangFight v0.1
 # ================================================
 #
 # Script for discovering witch language do you prefer currently

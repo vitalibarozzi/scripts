@@ -1,6 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # ================================================
-# LangFight v0.1
+# LangFight v0.1.1
 # ================================================
 #
 # Script for discovering witch language do you prefer currently
@@ -10,20 +10,20 @@
 #
 # ================================================
 
-_list_ = [ "JavaScript"
-         , "TypeScript"
-         , "C"
-         , "C++"
-         , "Java"
-         , "Haskell"
-         , "Rust"
-         , "Go"
-         , "Elm"
-         , "Shell Script"
-         , "PHP"
-         , "LISP"
-         , "Python"
-         ]
+_list_: list = [ "JavaScript",
+                 "TypeScript",
+		 "C",
+                 "C++",
+                 "Java",
+                 "Haskell",
+                 "Rust",
+                 "Go",
+                 "Elm",
+                 "Shell Script",
+                 "PHP",
+                 "LISP",
+                 "Python"
+                 ]
 
 # String -> String -> String
 # Ask user to choose witch one he/she prefers
@@ -65,6 +65,6 @@ def showScore(rawList, judgedList):
         print(rawList[0], "->", judgedList.count(rawList[0]))
         showScore(rawList[1:], judgedList)
 
-print("Score: ")
+
 showScore(_list_, judge(_list_))
 

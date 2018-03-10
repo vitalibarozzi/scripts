@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # ================================================
 # Vournal v0.1
 # ================================================
@@ -13,7 +13,6 @@ import time
 import io
 import subprocess
 
-# :: IO ()
 def main():
 
     date = time.strftime("%Y") + "." + time.strftime("%m") + "." + time.strftime("%d")  
@@ -40,7 +39,8 @@ def main():
     subprocess.call("vim " + entryFile, shell=True)
     print("Edting done.")
 
-main()
+if __name__ == "__main__":
+    main()
 
 
 

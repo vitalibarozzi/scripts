@@ -12,7 +12,7 @@
 
 _list_: list = [ "JavaScript",
                  "TypeScript",
-		 "C",
+                 "C",
                  "C++",
                  "Java",
                  "Haskell",
@@ -61,14 +61,5 @@ def showScore(rawList, judgedList):
         print(rawList[0], "->", judgedList.count(rawList[0]))
         showScore(rawList[1:], judgedList)
 
-<<<<<<< HEAD
-
-showScore(_list_, judge(_list_))
-=======
 if __name__ == "__main__":
-         print("Score: ")
          showScore(_list_, judge(_list_))
-
-
->>>>>>> 4e966bd617d5c32ec9fc3d30e50d88419a6836a7
-

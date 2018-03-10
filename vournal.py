@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # ================================================
-# VimJournal v0.1
+# Vournal v0.1
 # ================================================
 #
 # Wrapper for Vim to be used as a journal.

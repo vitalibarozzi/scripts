@@ -3,8 +3,8 @@
 # LangFight v0.1
 # ================================================
 #
-# Script for discovering witch language do you prefer currently
-# Written pure functional
+# Toy script for discovering witch language do you prefer over others.
+# Feel free to add your own ont the list.
 # License: MIT
 # Made by V. Barozzi (contato@oficinadodiabo.org)
 #

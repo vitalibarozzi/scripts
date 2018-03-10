@@ -3,8 +3,8 @@
 # LangFight v0.1.1
 # ================================================
 #
-# Script for discovering witch language do you prefer currently
-# Written pure functional
+# Toy script for discovering witch language do you prefer over others.
+# Feel free to add your own ont the list.
 # License: MIT
 # Made by V. Barozzi (contato@oficinadodiabo.org)
 #
@@ -25,7 +25,6 @@ _list_: list = [ "JavaScript",
                  "Python"
                  ]
 
-# String -> String -> String
 # Ask user to choose witch one he/she prefers
 def ask(optionA, optionB): 
     print("Witch language would you prefer to be working on?");
@@ -40,7 +39,6 @@ def ask(optionA, optionB):
         print("Invalid option.")
         return ask(optionA, optionB)
 
-# String -> [String] -> [String]
 # Will compare individual pairs
 def compare(string, strList):
     if len(strList) == 1:
@@ -48,7 +46,6 @@ def compare(string, strList):
     else:
         return [ask(string, strList[0])] + compare(string, strList[1:])
 
-# [String] -> [String]
 # Will compare one language with all the others
 def judge(langList):
     if len(langList) == 2:
@@ -56,7 +53,6 @@ def judge(langList):
     else:
         return compare(langList[0], langList[1:]) + judge(langList[1:])
 
-# [String] -> [String] -> IO ()
 # Will print score for each language
 def showScore(rawList, judgedList):
     if len(rawList) == 1:
@@ -65,6 +61,14 @@ def showScore(rawList, judgedList):
         print(rawList[0], "->", judgedList.count(rawList[0]))
         showScore(rawList[1:], judgedList)
 
+<<<<<<< HEAD
 
 showScore(_list_, judge(_list_))
+=======
+if __name__ == "__main__":
+         print("Score: ")
+         showScore(_list_, judge(_list_))
+
+
+>>>>>>> 4e966bd617d5c32ec9fc3d30e50d88419a6836a7
 

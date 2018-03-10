@@ -1,6 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # ================================================
-# VimJournal v0.1
+# Vournal v0.1.1
 # ================================================
 #
 # Wrapper for Vim to be used as a journal.
@@ -13,18 +13,17 @@ import time
 import io
 import subprocess
 
-# :: IO ()
-def main():
+def main() -> None:
 
-    date = time.strftime("%Y") + "." + time.strftime("%m") + "." + time.strftime("%d")  
-    hour = time.strftime("%T")
+    date: str = time.strftime("%Y") + "." + time.strftime("%m") + "." + time.strftime("%d")  
+    hour: str = time.strftime("%T")
 
-    entriesFolder = os.getcwd() + "/.entries"
-    entryFile = entriesFolder + "/" + date + ".txt"
+    entriesFolder: str = os.getcwd() + "/.entries"
+    entryFile: str = entriesFolder + "/" + date + ".txt"
     
     # Check if entriesfolder exist in current folder
     if not os.path.isdir(entriesFolder):
-        raise ValueError("Coudnt find", "'" + entriesFolder + "'", "folder.")
+        raise IOError("Coudnt find '" + entriesFolder + "' folder. Make it manually for safety.")
     
     # Check if entryFile already exist in current entriesFolder
     if not os.path.exists(entryFile):
@@ -40,10 +39,5 @@ def main():
     subprocess.call("vim " + entryFile, shell=True)
     print("Edting done.")
 
-main()
-
-
-
-
-
-
+if __name__ == "__main__":
+    main()

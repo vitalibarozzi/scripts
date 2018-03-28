@@ -13,15 +13,13 @@
 _list_: list = [ "JavaScript",
                  "TypeScript",
                  "C",
-                 "C++",
-                 "Java",
+                 "Erlang",
+                 "Elixir",
                  "Haskell",
                  "Rust",
-                 "Go",
                  "Elm",
                  "Shell Script",
                  "PHP",
-                 "LISP",
                  "Python"
                  ]
 

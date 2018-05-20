@@ -37,7 +37,7 @@ def main() -> None:
 
     # Open vim
     subprocess.call("vim " + entryFile, shell=True)
-    print("Edting done.")
+    print("Editing done.")
 
 if __name__ == "__main__":
     main()

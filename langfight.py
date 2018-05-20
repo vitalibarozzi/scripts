@@ -21,7 +21,12 @@ _list_: list = [ "JavaScript",
                  "Shell Script",
                  "PHP",
                  "Python"
-                 ]
+                 "Clojure"
+                 "Scheme"
+                 "PureScript"
+]
+
+# TODO first randomize the list
 
 # Ask user to choose witch one he/she prefers
 def ask(optionA, optionB): 

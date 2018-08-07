@@ -17,7 +17,7 @@ PATH+=":${HOME:-}/.cargo/bin/"
 PATH+=":${HOME:-}/.local/bin/"
 PATH+=":${HOME:-}/Documents/scripts/"
 PATH+=":${HOME:-}/Documents/_/"
-PATH+=":/usr/local/haskell/ghc-8.4.2-x86_64/bin/"
+PATH+=":${HOME:-}/.cargo/bin"
 
 ############
 ## OTHERS ##

@@ -1,62 +1,71 @@
 #!/usr/bin/env bash
 
-#
-# Collection of usefull functions
-#
+###################################
+# Collection of usefull functions #
+###################################
 
 # will run file according to its extension
-run() {
-    extension="${1##*.}"
-    args="${2:-}"
-
+function run {
+    
+    declare -r extension="${1##*.}"
+    declare -r args="${2:-}"
+    
     case $extension in
-
+        
         "hs") runhaskell "${1:-}" "$args";;
         "sh") bash       "${1:-}" "$args";;
         "js") node       "${1:-}" "$args";;
         "py") python3    "${1:-}" "$args";;
-
+        
         *)    echo "${1:-} is not a recognized extension.";;
     esac
-}
+} &&  declare -rf run;
 
 # To go back a number of folders
-up() {
-    for ((i=0; i<"$1"; i++)) { cd ..; };
-}
+function up {
+
+    declare -r num="${1:-}";
+
+    for ((i=0; i<"${num:-}"; i++)) {
+        cd ..;
+    };
+} && declare -rf up;
 
 # Simple loop
-loop() {
+function loop {
+    
     declare -r expr=${1:-} # what to eval
+    
     while true;
     do
         eval "${expr:-}";
         sleep 0.1;
     done
-};
+} && declare -rf loop;
 
 # Turn screen off
-soff() {
+function soff {
     xset dpms force off
-}
+} && declare -rf soff;
 
 # To backup using rsync
-bkp() {
-
-    [[ -z "$1" ]] && { echo "No media for backup specified." >&2; sleep 1; return 1; } || true
-
-    declare -r _path="/media/"
+function bkp {
+    
+    [[ -z "$1" ]] && { echo "Error: No media for backup specified." >&2; sleep 1; return 1; } || true
+    
+    declare -r _path="/media"
     declare -r _media="${1:-}";
     
-    if [[ -d "${_path}/${USER}/${_media}/" ]];
+    echo "Backuping [${_path}/${USERNAME}/${_media}/]..."
+    if [[ -d "${_path}/${USERNAME}/${_media}/" ]];
     then
-        until [[ -d "${_path}/${USER}/${_media}/backup/" ]];
+        until [[ -d "${_path}/${USERNAME}/${_media}/backup/" ]];
         do
             echo "Creating backup folder...";
-            mkdir "${_path}/${USER}/${_media}/backup/"; 
+            mkdir "${_path}/${USERNAME}/${_media}/backup/";
         done
-
-        declare -r target="${_path}/${USER}/${_media}/backup/" || return 1;
+        
+        declare -r target="${_path}/${USERNAME}/${_media}/backup/" || return 1;
         
         # old one
         #sudo rsync -ahPu --perms --exclude-from=${HOME}/.rsyncignore --delete --delete-excluded "${HOME}" "${target}" || return 1;
@@ -66,17 +75,18 @@ bkp() {
         
         return 0;
     else
-        echo "[x] No media for backup found." >&2;
-	    sleep 1;
-	    return 1;
+        echo "Error: No media for backup found." >&2;
+        sleep 1;
+        return 1;
     fi
-};
+} && declare -rf bkp;
 
 #########
 ## Vim ##
 #########
 
-swpkill() {
+# to delete swap files
+function swpkill {
     rm -rf ${HOME:-}/.vim/files/swap/*.swp
     rm -rf ${HOME:-}/.vim/files/swap/*.swo
-}
+} && declare -rf swpkill;

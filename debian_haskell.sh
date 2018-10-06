@@ -12,6 +12,7 @@ $exist haskell-platform || $install haskell-platform
 $exist hlint            || $install hlint
 $exist hoogle           || $install hoogle
 $exist ghc-mod          || $install ghc-mod
+$exist stylish-haskell  || $install stylish-haskell
 
 # TODO fix the exist part, wich have no executable to test using command -v
 $exist libc6-dev        || $install libc6-dev

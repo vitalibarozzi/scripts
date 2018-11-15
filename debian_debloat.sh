@@ -1,7 +1,5 @@
-# Imports
-. bash_func.sh || { echo "Problem importing."; sleep 5; exit 1; }
-
-$_wall
+#!/usr/bin/env bash
+. bash_macros.sh || exit 1;
 
 $remove gnome-calendar
 $remove gnome-weather
@@ -17,7 +15,22 @@ $remove gnome-mines
 $remove gnome-robots
 $remove gnome-nibbles
 $remove gnome-mahjongg
+$remove gnome-taquin
 
+$remove khmerconverter
+$remove libreoffice-help-km
+$remove task-khmer-desktop
+$remove task-khmer
+$remove fonts-khmeros
+
+$remove mozc-data
+$remove mozc-server
+$remove mozc-utils-gui
+$remove uim-mozc
+
+$remove synaptic
+$remove scim
+$remove mlterm
 $remove tali
 $remove evolution
 $remove thunderbird
@@ -39,4 +52,4 @@ $remove quadrapassel
 $remove rhythmbox
 $remove polari
 
-sudo apt autoremove
+$autoremove

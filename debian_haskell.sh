@@ -1,9 +1,7 @@
+#!/usr/bin/env bash
+. bash_macros.sh || exit 1;
+
 # Haskell Instalation
-
-# Imports
-. bash_func.sh || { echo "Problem importing."; sleep 5; exit 1; }
-
-$_wall
 
 # Haskell
 $exist gpp              || $install g++
@@ -13,6 +11,7 @@ $exist hlint            || $install hlint
 $exist hoogle           || $install hoogle
 $exist ghc-mod          || $install ghc-mod
 $exist stylish-haskell  || $install stylish-haskell
+$exist ghcid            || $install ghcid
 
 # TODO fix the exist part, wich have no executable to test using command -v
 $exist libc6-dev        || $install libc6-dev

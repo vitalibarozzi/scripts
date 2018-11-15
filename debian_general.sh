@@ -1,12 +1,8 @@
+#!/usr/bin/env bash
+. bash_macros.sh || exit 1;
+
 # General Instalations 
 
-# Imports
-. bash_func.sh || { echo "Problem importing."; sleep 5; exit 1; }
-
-# Flags
-$_wall
-
-# Stuff
 $exist vim   || $install vim
 $exist vifm  || $install vifm
 $exist git   || $install git
@@ -15,3 +11,6 @@ $exist mutt  || $install mutt
 $exist ctags || $install ctags
 $exist tmux  || $install tmux
 $exist make  || $install make
+$exist tree  || $install tree
+
+$exist newsboat || echo "i dont know hot to install newboat"

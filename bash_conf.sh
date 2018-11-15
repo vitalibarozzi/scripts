@@ -1,16 +1,10 @@
-# ============================================================================
-#
 # Desc:    General Configurations
-# Author:  J. V. Vitali Barozzi
-# License: MIT
-#
-# ============================================================================
 
 # History ====================================================================
 
 declare -g  HISTCONTROL=ignoreboth # don't put duplicate lines or lines starting with space in the history.
-declare -g     HISTSIZE=1000
-declare -g HISTFILESIZE=2000
+declare -g     HISTSIZE=100
+declare -g HISTFILESIZE=200
 
 shopt -s histappend   # append to the history file, don't overwrite it
 

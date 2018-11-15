@@ -1,46 +1,14 @@
-# ============================================================================
-#
-# Descrition : Usefull bash functions and "macros"
-# Author     : J. V. Vitali Barozzi
-# License    : MIT
-#
-# ============================================================================
+#!/usr/bin/env bash
 
-# Flags ======================================================================
-declare -r _wall="set -euo pipefail"
+# Usefull bash functions
 
-# Macros =====================================================================
-declare -r panic="echo PANIC! >&2; exit 13;"
-declare -r exist="command -v"
+# Update personal configurations
+function update {
+    pushd ${HOME}/Documents/configs/ &>/dev/null && make
+    popd &>/dev/null
+}
 
-# Debian Apt =================================================================
-declare -r install="sudo apt --yes install"
-declare -r remove="sudo apt --yes remove"
-
-# Functions ==================================================================
-
-# ======================================== #
-# Will run file according to its extension #
-# ======================================== #
-function run {
-    
-    declare -r extension="${1##*.}"
-    declare -r args="${2:-}"
-    
-    case $extension in
-        
-        "hs") runhaskell "${1:-}" "$args";;
-        "sh") bash       "${1:-}" "$args";;
-        "js") node       "${1:-}" "$args";;
-        "py") python3    "${1:-}" "$args";;
-        
-        *)    echo "${1:-} is not a recognized extension.";;
-    esac
-} &&  declare -rf run;
-
-# ============================== #
-# To go back a number of folders #
-# ============================== #
+# To go back a number of folders
 function up {
     declare -ri num="${1:-}";
     for ((i=0; i<"${num:-}"; i++)) {
@@ -48,30 +16,36 @@ function up {
     };
 } && declare -rf up;
 
-# =========== #
-# Simple loop #
-# =========== #
+# Simple loop
 function loop {
     
-    declare -r expr=${1:-} # what to eval
+    declare -r cmd=${1:-} # what to eval
     
     while true;
     do
-        eval "${expr:-}";
+        eval "${cmd:-}";
         sleep 0.1;
     done
 } && declare -rf loop;
 
-# =============== #
-# Turn screen off #
-# =============== #
+function wait_ {
+
+    declare -r FILENAME="${1:-}"
+    declare -r COMMAND="${2:-}"
+    
+    inotifywait ${FILENAME} | while read file; do
+        eval "${COMMAND}"
+    done
+
+    wait_ "${1}" "${2}"
+}
+
+# Turn screen off
 function soff {
     xset dpms force off
 } && declare -rf soff;
 
-# ===================== #
-# To backup using rsync #
-# ===================== #
+# To backup using rsync
 function bkp {
     
     [[ -z "$1" ]] && { echo "Error: No media for backup specified." >&2; sleep 1; return 1; } || true
@@ -104,9 +78,11 @@ function bkp {
     fi
 } && declare -rf bkp;
 
-# ================= #
-# Create new prompt #
-# ================= #
+# Create new prompt
+parse_git_branch() {
+         git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 function exitstatus {
 
     declare -r EXITSTATUS="$?"
@@ -116,6 +92,8 @@ function exitstatus {
     declare -r BLUE="\[\e[34m\]"
     declare -r OFF="\[\033[m\]"
 
+    declare -r BGGREEN="\[\e[0;32m\]"
+    
     declare -r HOST="\h"
     declare -r USER="\u"
     declare -r DIR="\w"
@@ -123,23 +101,22 @@ function exitstatus {
     declare -r DATE="\d"
     declare -r TIME="\t"
 
-    declare -r PROMPT="\n${GREEN}${USER}@${HOST}${OFF}: [${BLUE}\w${OFF}]"
+    declare -r BAR="${GREEN}${USER}@${HOST}${OFF} ${BLUE}\w${OFF}${BOLD}$(parse_git_branch)${OFF}"
+    declare -r PROMPTU="┏━"
+    declare -r PROMPTD="┗━"
 
     if [ "${EXITSTATUS}" -eq 0 ]
     then
-        PS1="${PROMPT} \n[${GREEN}✔️${OFF}] "
+        PS1="\n${GREEN}${PROMPTU}${OFF} ${BAR}\n${GREEN}${PROMPTD}${OFF} "
     else
-        PS1="${PROMPT} \n[${RED}✗${OFF}] {ERROR: ${RED}${EXITSTATUS}${OFF}} "
+        PS1="\n${RED}${PROMPTU}${OFF} Exit code ${RED}${BOLD}${EXITSTATUS}${OFF} at ${BOLD}${TIME}${OFF} of ${BOLD}${DATE}${OFF}\n${RED}${PROMPTD}${OFF} "
     fi
 
     PS2="${BOLD}>${OFF} "
 } && declare -rf exitstatus && declare -rg PROMPT_COMMAND=exitstatus
 
-# =========================== #
-# To delete swap files of vim #
-# =========================== #
+# To delete swap files of vim
 function swpkill {
     rm -rf ${HOME:-}/.vim/files/swap/*.swp
     rm -rf ${HOME:-}/.vim/files/swap/*.swo
 } && declare -rf swpkill;
-

@@ -1,10 +1,7 @@
+#!/usr/bin/env bash
+. bash_macros.sh || exit 1;
+
 # Elm Instalation
-
-# Imports
-. bash_func.sh || { echo "Problem importing."; sleep 5; exit 1; }
-
-$_wall
-
 function node_force_install() {
     $exist curl || { $install curl && $install software-properties-common; }
     curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
@@ -27,8 +24,8 @@ function spades_force_install() {
 }
 
 # Elm
-$exist nodejs       || node_force_install
-$exist npm          || node_force_install
-$exist elm          || elm_force_install
+$exist nodejs || node_force_install
+$exist npm    || node_force_install
+$exist elm    || elm_force_install
 #$exist elm-generate || spades_force_install
 

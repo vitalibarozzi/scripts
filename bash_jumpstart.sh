@@ -1,18 +1,8 @@
-# ============================================================================
-#
-# Desc:    Serves as entrance. Will source other files
-# Author:  J. V. Vitali Barozzi
-# License: MIT
-#
-# ============================================================================
+#!/usr/bin/env bash
 
-RC="Documents/dev_utils/scripts"
-EXT=".sh"
-
-# Load externals =============================================================
-
-. "${HOME:-}/${RC:-}/bash_conf${EXT:-}"
-. "${HOME:-}/${RC:-}/bash_func${EXT:-}"
-. "${HOME:-}/${RC:-}/bash_path${EXT:-}" 
-. "${HOME:-}/${RC:-}/bash_alias${EXT:-}"
-
+. "./bash_reasoning.sh" || exit 1;
+. "./bash_conf.sh"      || exit 2;
+. "./bash_func.sh"      || exit 3;
+. "./bash_path.sh"      || exit 4;
+. "./bash_alias.sh"     || exit 5;
+. "./bash_macros.sh"    || exit 6;

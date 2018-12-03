@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-. bash_macros.sh || exit 1;
+
+declare -r exist="command -v"
+declare -r install="sudo apt --yes install"
 
 # Elm Instalation
 function node_force_install() {

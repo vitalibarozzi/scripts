@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-. bash_macros.sh || exit 1;
+declare -r install="sudo apt --yes install"
 
 $install numix-icon-theme
 $install numix-gtk-theme

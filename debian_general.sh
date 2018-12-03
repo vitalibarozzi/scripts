@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
-. bash_macros.sh || exit 1;
+declare -r exist="command -v"
+declare -r install="sudo apt --yes install"
 
 # General Instalations 
 
 $exist vim   || $install vim
 $exist vifm  || $install vifm
+
+$exist konsole || $install konsole
+
 $exist git   || $install git
 $exist curl  || $install curl
 $exist mutt  || $install mutt

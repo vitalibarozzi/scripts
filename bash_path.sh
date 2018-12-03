@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Library of usefull paths
 
 # Default 
@@ -13,3 +12,4 @@ PATH+=":${HOME:-}/.local/bin/"
 PATH+=":${HOME:-}/.cargo/bin/"
 PATH+=":${HOME:-}/.cabal/bin/"
 PATH+=":${HOME:-}/Documents/scripts"
+PATH+=":${HOME:-}/Documents/bin"

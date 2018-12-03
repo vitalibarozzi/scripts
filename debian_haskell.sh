@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-. bash_macros.sh || exit 1;
-
-# Haskell Instalation
+declare -r install="sudo apt --yes install"
+declare -r exist="command -v"
 
 # Haskell
 $exist gpp              || $install g++

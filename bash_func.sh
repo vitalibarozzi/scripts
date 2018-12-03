@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Usefull bash functions
 
 # Update personal configurations
@@ -33,7 +32,7 @@ function wait_ {
     declare -r FILENAME="${1:-}"
     declare -r COMMAND="${2:-}"
     
-    inotifywait ${FILENAME} | while read file; do
+    inotifywait -e modify ${FILENAME} | while read file; do
         eval "${COMMAND}"
     done
 

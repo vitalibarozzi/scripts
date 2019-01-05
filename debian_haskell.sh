@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
+# Haskell installation stuff
+
 declare -r install="sudo apt --yes install"
 declare -r exist="command -v"
 
-# Haskell
 $exist gpp              || $install g++
 $exist gcc              || $install gcc
 $exist haskell-platform || $install haskell-platform

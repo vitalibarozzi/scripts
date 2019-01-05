@@ -1,23 +1,27 @@
 #!/usr/bin/env bash
 # Usefull bash functions
 
+# ----------------------------------------------------------
 # Update personal configurations
-function update {
-    pushd ${HOME}/Documents/configs/ &>/dev/null && make
-    popd &>/dev/null
-}
+function update
+{
+    (cd ${HOME}/Documents/configs/ &>/dev/null && make);
+} && declare -rf update;
 
+# ----------------------------------------------------------
 # To go back a number of folders
-function up {
+function up
+{
     declare -ri num="${1:-}";
     for ((i=0; i<"${num:-}"; i++)) {
         cd ..;
     };
 } && declare -rf up;
 
+# ----------------------------------------------------------
 # Simple loop
-function loop {
-    
+function loop
+{
     declare -r cmd=${1:-} # what to eval
     
     while true;
@@ -27,8 +31,9 @@ function loop {
     done
 } && declare -rf loop;
 
-function wait_ {
-
+# ----------------------------------------------------------
+function wait_
+{
     declare -r FILENAME="${1:-}"
     declare -r COMMAND="${2:-}"
     
@@ -37,53 +42,25 @@ function wait_ {
     done
 
     wait_ "${1}" "${2}"
-}
+} && declare -rf wait;
 
+# ----------------------------------------------------------
 # Turn screen off
-function soff {
+function soff
+{
     xset dpms force off
 } && declare -rf soff;
 
-# To backup using rsync
-function bkp {
-    
-    [[ -z "$1" ]] && { echo "Error: No media for backup specified." >&2; sleep 1; return 1; } || true
-    
-    declare -r _path="/media"
-    declare -r _media="${1:-}";
-    
-    echo "Backuping [${_path}/${USERNAME}/${_media}/]..."
-    if [[ -d "${_path}/${USERNAME}/${_media}/" ]];
-    then
-        until [[ -d "${_path}/${USERNAME}/${_media}/backup/" ]];
-        do
-            echo "Creating backup folder...";
-            mkdir "${_path}/${USERNAME}/${_media}/backup/";
-        done
-        
-        declare -r target="${_path}/${USERNAME}/${_media}/backup/" || return 1;
-        
-        # old one
-        #sudo rsync -ahPu --perms --exclude-from=${HOME}/.rsyncignore --delete --delete-excluded "${HOME}" "${target}" || return 1;
-        
-        # new one
-        sudo rsync -ahPu --perms --delete --delete-excluded "${HOME}/Documents" "${target}" || return 1;
-        
-        return 0;
-    else
-        echo "Error: No media for backup found." >&2;
-        sleep 1;
-        return 1;
-    fi
-} && declare -rf bkp;
-
+# ----------------------------------------------------------
 # Create new prompt
-parse_git_branch() {
-         git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+function parse_git_branch
+{
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-function exitstatus {
-
+# ----------------------------------------------------------
+function exitstatus
+{
     declare -r EXITSTATUS="$?"
     declare -r BOLD="\[\033[1m\]"
     declare -r RED="\[\033[0;31m\]"
@@ -114,8 +91,10 @@ function exitstatus {
     PS2="${BOLD}>${OFF} "
 } && declare -rf exitstatus && declare -rg PROMPT_COMMAND=exitstatus
 
+# ----------------------------------------------------------
 # To delete swap files of vim
-function swpkill {
+function swpkill
+{
     rm -rf ${HOME:-}/.vim/files/swap/*.swp
     rm -rf ${HOME:-}/.vim/files/swap/*.swo
 } && declare -rf swpkill;

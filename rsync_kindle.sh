@@ -8,7 +8,7 @@ function ksync
     declare -r _media="Kindle";
     declare -r media="${_path:-}/${USERNAME:-}/${_media:-}"
     declare -r docs="${media:-}/documents/"
-    declare -r args="--times --stats --links --partial --progress --human-readable --preallocate --recursive --perms --owner --devices --specials --group --delete --delete-excluded"
+    declare -r args="--times --stats --links --partial --progress --human-readable --recursive --perms --owner --devices --specials --group"
     declare -r rsync="sudo rsync"
     
     echo "Kindle: [${media:-}]..."
@@ -22,7 +22,12 @@ function ksync
             mkdir "${docs:-}";
         done
         
-        ${rsync:-} ${args:-} "${HOME}/Documents/leitura/" "${docs:-}";
+        # Down pdrs
+        ${rsync:-} ${args:-} --include="*.pdr" "${docs:-}" "${HOME}/Documents/leitura/";
+
+        # Up *
+        ${rsync:-} ${args:-} --include="*" "${HOME}/Documents/leitura/" "${docs:-}";
+
         return 0;
     else
         echo "Error: Kindle not found at '${media:-}'." >&2;

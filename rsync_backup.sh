@@ -9,8 +9,8 @@ function bkp
     declare -r _media="${1:-}";
     declare -r media="${_path:-}/${USERNAME:-}/${_media:-}/"
     declare -r target="${media:-}/backup";
-    declare -r args="--times --stats --links --partial --human-readable --recursive --perms --owner --devices --specials --group --delete"
-    declare -r rsync="sudo rsync"
+    declare -r args="--delete --times --stats --links --human-readable --recursive --perms --group"
+    declare -r rsync="rsync"
     declare -r noMediaSpec="Error: No media for backup specified."
     declare -r noMediaFound="Error: No media for backup found at '${media:-}/'."
 

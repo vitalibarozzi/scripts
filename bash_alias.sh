@@ -22,6 +22,9 @@ alias commit='git commit -m';
 alias    log='git log';
 alias   push='git push';
 
+alias konsole="konsole --fullscreen --notransparency"
+alias vifm="vifm ${HOME}/Documents"
+
 # Haskell 
 alias ghci-core="ghci -ddump-simpl -dsuppress-idinfo -dsuppress-coercions -dsuppress-type-applications -dsuppress-uniques -dsuppress-module-prefixes"
 

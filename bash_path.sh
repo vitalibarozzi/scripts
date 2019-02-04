@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Library of usefull paths
 
+# Helpers
+DOCS="${HOME:-}/Documents"
+
 # Default 
 PATH+=":/bin/"
 PATH+=":/usr/local/bin/"
@@ -11,5 +14,5 @@ PATH+=":/usr/lib/mit/sbin/"
 PATH+=":${HOME:-}/.local/bin/"
 PATH+=":${HOME:-}/.cargo/bin/"
 PATH+=":${HOME:-}/.cabal/bin/"
-PATH+=":${HOME:-}/Documents/scripts"
-PATH+=":${HOME:-}/Documents/bin"
+PATH+=":${DOCS:-}/executables/scripts"
+PATH+=":${DOCS:-}/executables/binaries"

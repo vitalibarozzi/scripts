@@ -12,6 +12,7 @@ $exist hoogle           || $install hoogle
 $exist ghc-mod          || $install ghc-mod
 $exist stylish-haskell  || $install stylish-haskell
 $exist ghcid            || $install ghcid
+$exist hasktags         || $install hasktags
 
 # TODO fix the exist part, wich have no executable to test using command -v
 $exist libc6-dev        || $install libc6-dev

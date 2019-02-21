@@ -77,7 +77,7 @@ function exitstatus
     declare -r DATE="\d"
     declare -r TIME="\t"
 
-    declare -r BAR="${GREEN}${USER}@${HOST}${OFF} ${BLUE}\w${OFF}${BOLD}$(parse_git_branch)${OFF}"
+    declare -r BAR="${GREEN}${USER}${OFF} ${BLUE}\w${OFF}${BOLD}$(parse_git_branch)${OFF}"
     declare -r PROMPTU="┏━"
     declare -r PROMPTD="┗━"
 

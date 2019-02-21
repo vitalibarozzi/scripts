@@ -6,9 +6,9 @@ alias      c="clear";
 alias      e="exit \$?";
 alias      s="sudo";
 alias      m="make";
+alias      l='ls --group-directories-first --almost-all --human-readable --sort=extension -l';
 
 # General 
-alias     ls='ls --group-directories-first --almost-all --human-readable --sort=extension -l';
 alias umount='sudo umount';
 alias   grep='grep --color';
 
@@ -21,9 +21,10 @@ alias status='git status';
 alias commit='git commit -m';
 alias    log='git log';
 alias   push='git push';
+alias  merge='git merge';
 
 alias konsole="konsole --fullscreen --notransparency"
-alias vifm="vifm ${HOME}/Documents"
+alias vifm="vifm"
 
 # Haskell 
 alias ghci-core="ghci -ddump-simpl -dsuppress-idinfo -dsuppress-coercions -dsuppress-type-applications -dsuppress-uniques -dsuppress-module-prefixes"

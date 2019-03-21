@@ -38,7 +38,6 @@ $remove tali
 $remove evolution
 $remove thunderbird
 $remove brasero
-$remove cheese
 $remove goldendict
 $remove four-in-a-row
 $remove anthy

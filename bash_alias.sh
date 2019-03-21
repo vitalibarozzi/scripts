@@ -16,12 +16,14 @@ alias   grep='grep --color';
 alias   diff='git difftool';
 alias  clone='git clone';
 alias branch='git branch';
+alias chekout='git checkout';
 alias    add='git add';
 alias status='git status';
 alias commit='git commit -m';
 alias    log='git log';
 alias   push='git push';
 alias  merge='git merge';
+alias  fetch='git fetch'
 
 alias konsole="konsole --fullscreen --notransparency"
 alias vifm="vifm"

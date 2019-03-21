@@ -27,7 +27,7 @@ function loop
     while true;
     do
         eval "${cmd:-}";
-        sleep 0.1;
+        sleep 1;
     done
 } && declare -rf loop;
 
@@ -85,7 +85,7 @@ function exitstatus
     then
         PS1="\n${GREEN}${PROMPTU}${OFF} ${BAR}\n${GREEN}${PROMPTD}${OFF} "
     else
-        PS1="\n${RED}${PROMPTU}${OFF} Exit code ${RED}${BOLD}${EXITSTATUS}${OFF} at ${BOLD}${TIME}${OFF} of ${BOLD}${DATE}${OFF}\n${RED}${PROMPTD}${OFF} "
+        PS1="\n${RED}${PROMPTU}${OFF} Exit code: ${RED}${BOLD}${EXITSTATUS}${OFF} - ${BAR}\n${RED}${PROMPTD}${OFF} "
     fi
 
     PS2="${BOLD}>${OFF} "

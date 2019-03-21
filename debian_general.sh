@@ -12,6 +12,7 @@ $exist ctags    || $install ctags
 $exist curl     || $install curl
 $exist mutt     || $install mutt
 $exist git      || $install git
+$exist pass     || $install pass
 
 $exist konsole  || $install konsole
 $exist tree     || $install tree

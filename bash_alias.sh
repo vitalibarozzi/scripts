@@ -13,7 +13,7 @@ alias umount='sudo umount';
 alias   grep='grep --color';
 
 # Git 
-alias   diff='git difftool';
+alias  gdiff='git difftool';
 alias  clone='git clone';
 alias branch='git branch';
 alias chekout='git checkout';

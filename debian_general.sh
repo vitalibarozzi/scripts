@@ -13,8 +13,8 @@ $exist curl     || $install curl
 $exist mutt     || $install mutt
 $exist git      || $install git
 $exist pass     || $install pass
-
-$exist konsole  || $install konsole
+$exist nicotine || $install nicotine
 $exist tree     || $install tree
 $exist cmus     || $install cmus
+$exist konsole  || $install konsole
 $exist newsboat || { echo "i dont know hot to install newsboat" >&2; }

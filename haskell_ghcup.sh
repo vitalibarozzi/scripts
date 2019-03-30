@@ -16,6 +16,11 @@ edo()
     "$@" || exit 2
 }
 
+
+echo "Running modified part made by me"
+sudo apt install libtinfo-dev
+echo "Modified part ended..."
+
 echo
 echo "Welcome to Haskell!"
 echo

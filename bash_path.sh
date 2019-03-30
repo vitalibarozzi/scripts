@@ -16,3 +16,7 @@ PATH+=":${HOME:-}/.cargo/bin/"
 PATH+=":${HOME:-}/.cabal/bin/"
 PATH+=":${DOCS:-}/executables/scripts"
 PATH+=":${DOCS:-}/executables/binaries"
+
+# Haskell
+PATH+=":${HOME:-}/.ghcup/bin/"
+

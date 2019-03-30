@@ -18,3 +18,4 @@ $exist tree     || $install tree
 $exist cmus     || $install cmus
 $exist konsole  || $install konsole
 $exist newsboat || { echo "i dont know hot to install newsboat" >&2; }
+$exist coqtop   || $install coq
